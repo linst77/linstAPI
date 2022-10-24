@@ -69,12 +69,6 @@ class UserVerifyView( viewsets.ModelViewSet):
         return HttpResponseNotFound()
 
 
-    # @action(detail=True, methods=['PATCH'], url_path='user-create')
-    # def user_info( self, request):
-    #     print (request)
-
-    #     return Response( {"test":"works"})
-
 # Create your views here.
 class ProfileView( viewsets.ModelViewSet):
     permission_classes = [AllowAny]

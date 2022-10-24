@@ -21,6 +21,7 @@ class UserVerifyModel( models.Model):
     product_category = models.IntegerField( blank=True, null=True)
     product_type = models.IntegerField( blank=True, null=True)
     process_step = models.IntegerField( default=0, blank=True, null=True)
+    menu = models.IntegerField( default=0, blank=True, null=True)
 
     # product_type = models.ForeignKey( ProductType, on_delete=models.CASCADE, blank=True, null=True)
     option = models.CharField( max_length=100, blank=True, null=True)
@@ -58,7 +59,7 @@ class ProfileModel( models.Model):
     ### product type
     product_type = models.ForeignKey( ProductType, on_delete=models.CASCADE, blank=True, null=True, related_name="product_type_sel")
     product_category = models.ForeignKey( Category, on_delete=models.CASCADE, blank=True, null=True, related_name="category_sel")
-
+    menu = models.IntegerField( default=0, blank=True, null=True) 
 
     ### process steps
     process_step = models.IntegerField( default=0, blank=True, null=True) 
@@ -95,18 +96,13 @@ class ProfileModel( models.Model):
             except:
                 product_c = None
             try:
-                product_n = NationType.objects.get( nation_phone = instance.nation)
+                product_n = NationType.objects.get( pk = instance.nation)
             except:
                 product_n = None
             try:
                 product_s = StoreType.objects.get( pk = instance.store)
             except:
                 product_s = None
-
-            if product_c != None:
-                step = 2
-            if product_t != None:
-                step = 3
 
             ProfileModel.objects.create(
                                     user_mail=instance,
@@ -116,6 +112,7 @@ class ProfileModel( models.Model):
                                     store = product_s,
                                     product_category = product_c,
                                     product_type = product_t,
-                                    process_step = step,
+                                    process_step = instance.process_step,
+                                    menu = instance.menu,
                                     slug = instance.slug,
                                     )
