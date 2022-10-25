@@ -97,27 +97,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-## SQL lite
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+# SQL lite
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 
 ## AWS
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbmaster',
-        'USER': 'linstadmin',
-        'PASSWORD': 'linstadmin1234',
-        'HOST': 'dbmaster.chjw2hu4wjwg.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dbmaster',
+#         'USER': 'linstadmin',
+#         'PASSWORD': 'linstadmin1234',
+#         'HOST': 'dbmaster.chjw2hu4wjwg.ap-northeast-2.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 ### local
 # DATABASES = {
