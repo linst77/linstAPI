@@ -18,6 +18,7 @@ def thumb_file_path(instance, filename):
 
 # Create your models here.
 class FileModel( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     user_mail = models.ForeignKey( UserVerifyModel, on_delete=models.CASCADE, related_name='file_user', blank=True, null=True)
     product_type = models.ForeignKey( ProductType, on_delete=models.PROTECT, related_name='file_product_type', blank=True, null=True)
     files = models.FileField( upload_to=file_path, null=True, blank=True)
@@ -43,6 +44,7 @@ class FileModel( models.Model):
         super(FileModel, self).save(*args, **kwargs)
 
 class ContentModel( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     user_mail = models.ForeignKey( UserVerifyModel, on_delete=models.CASCADE, related_name='content_user', blank=True, null=True)
     user_phone = models.IntegerField( blank=True, null=True)
     product_type = models.ForeignKey( ProductType, on_delete=models.PROTECT, related_name='content_type', blank=True, null=True)

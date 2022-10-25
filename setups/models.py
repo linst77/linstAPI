@@ -6,6 +6,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class EntryType( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     url_no_create = models.BooleanField( default=False)
     login_no_create = models.BooleanField( default=False)
     url_popup = models.BooleanField( default=True)
@@ -16,6 +17,8 @@ class EntryType( models.Model):
 
 
 class VerifyType( models.Model):
+
+    id = models.AutoField(primary_key=True, editable=False)    
     email_verify = models.BooleanField( default=True)
     phone_verify = models.BooleanField( default=False)
 
@@ -24,6 +27,7 @@ class VerifyType( models.Model):
 
 
 class Category( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     category = models.CharField( max_length=200, null=True, blank=True)
     def __str__( self):
         return str( self.category)
@@ -34,6 +38,7 @@ def storeimage_path(instance, filename):
     return os.path.join(f'images/temp/store/{instance.id}/{filename}')
 
 class StoreType( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     store_title = models.CharField( max_length=200, null=True, blank=True)
     store_intro = models.CharField( max_length=200, null=True, blank=True)
     file_01 = models.ImageField( upload_to=storeimage_path, null=True, blank=True)
@@ -61,6 +66,7 @@ def nationimage_path(instance, filename):
     return os.path.join(f'images/temp/nation/{instance.id}/{filename}')
 
 class NationType( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     nation_title = models.CharField( max_length=200, null=True, blank=True)
     files = models.ImageField( upload_to=nationimage_path, null=True, blank=True)
     nation_phone = models.CharField( max_length=200, null=True, blank=True)
@@ -80,6 +86,7 @@ class NationType( models.Model):
 
 
 class ProductType( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)    
     product_category = models.ForeignKey( Category, on_delete=models.CASCADE, blank=True, null=True, related_name="product_category")
     product_type = models.CharField( max_length=200, blank=True, null=True)
     items = models.IntegerField(blank=True, null=True)

@@ -11,6 +11,7 @@ import json
 
 class UserVerifyModel( models.Model):
     ### This is login ###
+    id = models.AutoField(primary_key=True, editable=False)
     user_mail = models.EmailField( max_length=254, blank=True, null=True)
     user_phone = models.IntegerField( blank=True, null=True)
     
@@ -39,6 +40,9 @@ class UserVerifyModel( models.Model):
         super(UserVerifyModel, self).save(*args, **kwargs)
 
 class ProfileModel( models.Model):
+
+    id = models.AutoField(primary_key=True, editable=False)
+
     ### Login info ###
     user_mail = models.ForeignKey( UserVerifyModel, on_delete=models.CASCADE, related_name="user_mail_sel")    
     user_phone = models.IntegerField( blank=True, null=True)
