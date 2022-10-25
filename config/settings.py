@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g$o-zhbndskn#t46-rzga$cb^x%d@%t&afniqyu_xwvij&k@g8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['52.79.63.88']
 
 
 # Application definition
@@ -98,27 +98,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # SQL lite
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
-
-## AWS
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'dbmaster',
-#         'USER': 'linstadmin',
-#         'PASSWORD': 'linstadmin1234',
-#         'HOST': 'dbmaster.chjw2hu4wjwg.ap-northeast-2.rds.amazonaws.com',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
+# AWS
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbmaster',
+        'USER': 'linstadmin',
+        'PASSWORD': 'linstadmin1234',
+        'HOST': 'ls-7a590651b7dc741586e2c98d2fe85538c20cacc0.c9moiqwv5ama.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 ### local
 # DATABASES = {
 #     'default': {
