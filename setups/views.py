@@ -1,11 +1,17 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny 
 from .models import VerifyType, ProductType, NationType, StoreType, Category, EntryType
+from users.models import UserVerifyModel, ProfileModel
+from content.models import ContentModel, FileModel
 from .serializer import VerifyTypeSerializer, ProductTypeSerializer, NationTypeSerializer, StoreTypeSerializer, CategorySerializer, EntryTypeSerializer
+from users.serializer import ProfileModelSerializer, UserVerifyModelSerializer
+from content.serializer import ContentModelSerializer, FileModelSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.http import HttpResponse, JsonResponse
+# from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -62,3 +68,30 @@ class CategoryView( viewsets.ModelViewSet):
             serializer = CategorySerializer( temp, many=True)
             return Response( serializer.data)
         
+
+
+class FinalizeView( APIView):
+    # permission_classes = [AllowAny]
+
+    # user_queryset = UserVerifyModel.objects.all()
+    # profile_queryset = ProfileModel.objects.all()
+    # content_queryset = ContentModel.objects.all()
+    # file_queryset = FileModel.objects.all()
+
+    # user_serializer_class = UserVerifyModelSerializer
+    # profile_serializer_class = ProfileModelSerializer
+    # content_serializer_class = ContentModelSerializer
+    # file_serializer_class = FileModelSerializer
+
+    def get_object(self, pk):
+        return get_object_or_404(UserVerifyModel, pk=pk)
+
+
+    def get(self, request, pk, format=None):
+        post = self.get_object(pk)
+        serializer = UserVerifyModelSerializer(post)
+        return Response(serializer.data)
+
+
+
+        return Response( { "test":"works"})

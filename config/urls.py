@@ -19,15 +19,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework.routers import DefaultRouter
 from users.views import UserVerifyView, ProfileView, UserVerifyView2
-from setups.views import VerifyTypeView, ProductTypeView, NationTypeView, StoreTypeView, CategoryView, EntryTypeView
+from setups.views import VerifyTypeView, ProductTypeView, NationTypeView, StoreTypeView, CategoryView, EntryTypeView, FinalizeView
 from content.views import ContentModelView, FileModelView, FileUserListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')), 
     path('api/files/<int:pk>/<int:pk2>/', FileUserListView.as_view(), name='user_files'),
-    path('api/user/', UserVerifyView2.as_view(), name='user_api')
-
+    path('api/user/', UserVerifyView2.as_view(), name='user_api'),
+    path('api/final/<int:pk>', FinalizeView.as_view(), name='final_api')
 ]
 
 if settings.DEBUG:
