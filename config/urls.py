@@ -27,7 +27,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')), 
     path('api/files/<int:pk>/<int:pk2>/', FileUserListView.as_view(), name='user_files'),
     path('api/user/', UserVerifyView2.as_view(), name='user_api'),
-    path('api/final/<int:pk>', FinalizeView.as_view(), name='final_api')
+    path('api/finals/<int:pk>/', FinalizeView.as_view(), name='final_api')
 ]
 
 if settings.DEBUG:

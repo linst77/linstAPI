@@ -105,27 +105,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 # AWS
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbmaster',
-        'USER': 'linstadmin',
-        'PASSWORD': 'linstadmin1234',
-        'HOST': 'ls-8d4648e9ccb6288df1a7599160402294c51eed9e.c9moiqwv5ama.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '5432',
-    }
-}
-### local
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'test101',
-#         'USER': 'postgres',
-#         'PASSWORD': 'admin1234',
-#         'HOST': 'localhost',
+#         'NAME': 'dbmaster',
+#         'USER': 'linstadmin',
+#         'PASSWORD': 'linstadmin1234',
+#         'HOST': 'ls-8d4648e9ccb6288df1a7599160402294c51eed9e.c9moiqwv5ama.ap-northeast-2.rds.amazonaws.com',
 #         'PORT': '5432',
 #     }
 # }
+# local
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test206',
+        'USER': 'postgres',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 
 

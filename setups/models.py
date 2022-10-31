@@ -2,6 +2,18 @@ from django.db import models
 import os
 import string, random
 from django.utils.text import slugify
+from django.conf import settings
+
+
+
+import json
+from io import BytesIO
+from wsgiref.util import FileWrapper
+from django.http import HttpResponse
+from django.core.files import File
+from django.core.files.base import ContentFile
+
+
 
 
 # Create your models here.
@@ -15,9 +27,15 @@ class EntryType( models.Model):
     def __str__( self):
         return str( self.id)
 
+def storeimage_path2(instance, filename):
+    # return os.path.join(f'images/{filename}')
+    return os.path.join(f'system/invoice/{filename}')
+
+class FinalType( models.Model):
+    id = models.AutoField(primary_key=True, editable=False)
+    file_end = models.FileField( upload_to=storeimage_path2, null=True, blank=True)
 
 class VerifyType( models.Model):
-
     id = models.AutoField(primary_key=True, editable=False)    
     email_verify = models.BooleanField( default=True)
     phone_verify = models.BooleanField( default=False)

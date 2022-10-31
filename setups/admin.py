@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductType, VerifyType, StoreType, NationType, Category, EntryType
+from .models import ProductType, VerifyType, StoreType, NationType, Category, EntryType, FinalType
 # Register your models here.
 
 @admin.register( EntryType)
@@ -25,3 +25,7 @@ class NationTypeAdmin( admin.ModelAdmin):
 @admin.register( Category)
 class CategoryAdmin( admin.ModelAdmin):
     list_display = ['id', 'category']
+
+@admin.register( FinalType)
+class FinalTypeAdmin( admin.ModelAdmin):
+    list_display = ['id']
