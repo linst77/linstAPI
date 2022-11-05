@@ -20,7 +20,7 @@ def de_alpha( file):
         return files
 
 def de_thumb( file):
-    size_wh = (200, 112)
+    size_wh = (110, 62)
     files = file
     img = PIL.Image.open( file)
     file_name = os.path.splitext( files.name)[0] + ".jpg"

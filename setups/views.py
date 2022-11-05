@@ -109,11 +109,12 @@ class FinalizeView( generics.GenericAPIView):
     product_type_serializer_class = FileModelSerializer
 
 
-    def get(self, request, pk):
+    def post(self, request, pk):
 
         try:
             user_model = self.user_queryset.filter(id=pk)[0]
             user_data = self.user_serializer_class( user_model, many=False).data
+
         except:
             user_model = None
             user_data = None
@@ -131,6 +132,10 @@ class FinalizeView( generics.GenericAPIView):
             content_data = self.content_serializer_class( content_model, many=False).data
             
             # print ( json.loads( content_data.get("sub_title")))
+
+            ttt = []
+            for i in [user_data, profile_data, content_data]:
+                ttt.append(i)
 
             # print ( profile_data.get)
 
@@ -167,7 +172,7 @@ class FinalizeView( generics.GenericAPIView):
                 ids = content_data.get("photo_" + str( i))
                 json_files = self.file_queryset.filter( id__in=ids).order_by('order')
                 files = self.file_serializer_class( json_files, many=True)
-                content_data["photo_" + str(i)] = files.data
+                content_data["photo_" + str(i)] = [files.data]
         except:
             content_model = None
             content_data = None
@@ -177,21 +182,32 @@ class FinalizeView( generics.GenericAPIView):
         for i in [user_data, profile_data, content_data]:
             json_return.append( i)
 
+
+
+        # file = (ID + '.json')
+        #         OBJ = Free_FileHistory.objects.get(free_transfer_id=ID)
+        #         data = CreateDictioneryJSON(HEADER,ROW)
+        #         read=json.dumps(data, indent=4)
+        #         txt= ContentFile(read.encode('utf-8'))
+        #         OBJ.free_file.save(file, txt)
+
+
         
-
-
-        file = 'student_file.json'
         # with open(file, "w") as json_file:
-        #     json.dump(json_return, json_file)
+        print ("asdjklhaskljdhflksajdhf")
+        #file = ("test.json")
+        test = str(user_data)
 
-        aaaaa = ContentFile( file, b"asdf")
+        print ( json.load( test ))
+        aaaaa = ContentFile( test.encode('utf-8'))
+        # aaaaa.content_type( 'application/json')
+        aaaa = default_storage.save("invoice/cccccccccc.json", aaaaa)
+
+
+        version = FinalType.objects.create(file_end = aaaa)
         
-        aaaa = default_storage.save("invoice/", file)
-
-
-        final_mod = FinalType(file_end = aaaa)
-        final_mod.save()
-        # aaaa = default_storage.save("invoice/", file)
+        # final_mod.end_file.save(file, aaaaa)
+        # aaaa = default_storage.save("invoice/aaaa.json", file)
 
 
         # json_file.seek(0)
