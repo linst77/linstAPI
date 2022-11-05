@@ -193,18 +193,18 @@ class FinalizeView( generics.GenericAPIView):
 
 
         
-        # with open(file, "w") as json_file:
-        print ("asdjklhaskljdhflksajdhf")
-        #file = ("test.json")
-        test = str(user_data)
+        # # with open(file, "w") as json_file:
+        # print ("asdjklhaskljdhflksajdhf")
+        # #file = ("test.json")
+        # test = str(user_data)
 
-        print ( json.load( test ))
-        aaaaa = ContentFile( test.encode('utf-8'))
-        # aaaaa.content_type( 'application/json')
-        aaaa = default_storage.save("invoice/cccccccccc.json", aaaaa)
+        # print ( json.load( test ))
+        # aaaaa = ContentFile( test.encode('utf-8'))
+        # # aaaaa.content_type( 'application/json')
+        # aaaa = default_storage.save("invoice/cccccccccc.json", aaaaa)
 
 
-        version = FinalType.objects.create(file_end = aaaa)
+        # version = FinalType.objects.create(file_end = aaaa)
         
         # final_mod.end_file.save(file, aaaaa)
         # aaaa = default_storage.save("invoice/aaaa.json", file)
